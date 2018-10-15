@@ -7,15 +7,25 @@
       update_cache: yes
   - name: install git
     apt:
-      name: python
+      name: git
       update_cache: yes
       state: present
-  - name: install python and virtual environment
+  - name: Install python and virtual environment
     apt:
       name: {{item}}
       update_cache: yes
       state: present
     with_items:
     - python
+    - python-pip
     - pyton-virtualenv
-    
+  - name: Installation of pstgres, nginx, supervisor 
+    apt:
+      name: {{item}}
+      update_cache: yes
+      state: present
+    with_items:
+    - postgres
+    - nginx
+    - supervisor
+  
