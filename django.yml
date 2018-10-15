@@ -2,5 +2,20 @@
 - hosts: all
   become: yes
   tasks:
-  - name: pinging
-    ping:
+  - name: update chache
+    apt:
+      update_cache: yes
+  - name: install git
+    apt:
+      name: python
+      update_cache: yes
+      state: present
+  - name: install python and virtual environment
+    apt:
+      name: {{item}}
+      update_cache: yes
+      state: present
+    with_items:
+    - python
+    - pyton-virtualenv
+    
